@@ -1,0 +1,12 @@
+.slide-container{
+    max-width: 800px;
+    background-color: yellowgreen;
+    margin: auto;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+.slide-img{
+    display:none;
+}
