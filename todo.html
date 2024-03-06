@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <script src="{%static 'script.js'%}"></script>
+    <link rel="stylesheet" href="{%static 'style.css' %}">
+    <style>
+    
+    body{
+        background-image: url('{% static "todoimages.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        
+    }
+    h1{
+        color: whitesmoke;
+        text-align: center;
+        margin-top: 60px;
+        width: 900px;
+        margin-left: 30px;
+    }
+    .content{
+        margin-left: 280px;
+        margin-top: 70px;
+
+    }
+    #input{
+        padding: 20px;
+        width: 300px;
+        font-size: 18px;
+    }
+    #adds{
+        padding: 20px;
+        width: 80px;
+        color: rgb(17, 12, 12);
+        font-weight: bolder;
+    }
+    .delbtn{
+        padding: 16px;
+        font-weight: bolder;
+    }
+    .list{
+        color:whitesmoke;
+        list-style-type: none;
+        font-size: 18px;
+        font-weight: 12px;
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid white;
+        padding: 10px;
+        border-radius: 6px;
+    }
+    #todolist{
+        margin-top: 35px;
+        width: 75%;
+        margin-left: 85px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>"Tick, Task, Triumph: Unleash Your Productivity with the Ultimate To-Do List!"</h1>
+    <div class="content">
+    <input type="text" id="input">
+    <button id="adds" onclick="add()">Add</button>
+    </div>
+    <ul id="todolist">
+        <li class="list">Are You Ready? <button class="delbtn" onclick="deleteItem(event)">Delete</button></li>
+    </ul>
+</div>
+    <script>
+        var input = document.getElementById('input')
+        var ul = document.getElementById('todolist')
+        function add(){
+
+            if (input.value.trim() === '') {
+                alert('You Must Enter Something!!');
+                return;
+            }
+            var item = document.createElement('li')
+            item.className = 'list';
+            item.innerHTML = input.value + "<button class=\"delbtn\" onclick='deleteItem(event)'>Delete</button>"
+            ul.append(item)
+            input.value = ''
+
+           
+            
+        }
+        function deleteItem(event){
+            event.target.parentElement.remove()
+        }
+    </script>
+</body>
+</html>
