@@ -20,33 +20,39 @@
             background-size: cover;
             background-position: center; */
         }
-        #para-container{
+        .container{
+            padding: 0px;
+        }
+        .journal-container{
+            padding: 15px;
             width: 40%;
-            border: 2px solid #344955;
             background-color: #344955;
             border-radius: 10px;
-            margin-left: 20px;
-            padding: 15px;
             color: whitesmoke;
+            margin: 30px;
+            display: inline-block;
+            vertical-align: top;
+
         }
         #title{
             background-color: #7E6363;
             margin-top: 0px;
-            height: 70px;
+            height: 65px;
             padding: 10px 5px;
             padding-top: 20px;
-            text-align: center;
+            /* text-align: center; */
         }
         #adds-btn{
             border-radius: 100%;
             border: none;
-            background-color: #7E6363;
+            background-color: #070F2B;
             font-size: 60px;
+            color: whitesmoke;
             width: 70px;
             height: 70px;
             position: absolute;
-            right: 6%;
-            top: 80%;
+            right: 3%;
+            top: 2%;
             z-index: 1;
         }
         #popup-box{
@@ -142,18 +148,60 @@
             border-radius: 5px;
             color: whitesmoke;
             font-size: 15px;
+            margin-left: 15px;
+            margin-right: 15px;
         }
-        
+        .journal-container h2{
+            color: yellowgreen;
+        }
+        .journal-container p{
+            color: #F8F4EC;
+        }
+        .editbtn{
+            padding: 15px 20px;
+            background-color: rgb(26, 23, 23);
+            border: none;
+            border-radius: 5px;
+            color: whitesmoke;
+            font-size: 15px;
+        }
+        .savebtn{
+            padding: 15px 20px;
+            background-color: green;
+            border: none;
+            border-radius: 5px;
+            color: whitesmoke;
+            font-size: 15px;
+        }
+        .editbtn:hover{
+            color:rgb(26, 23, 23);
+            background-color: whitesmoke;
+        }
+        .delbtn:hover{
+            color:rgb(26, 23, 23);
+            background-color: whitesmoke;
+        }
+        .savebtn:hover{
+            color:rgb(26, 23, 23);
+            background-color: whitesmoke;
+        }
+        .edit-mode {
+             border: 2px solid grey;  
+        }
     </style>
 </head>
 <body>
-<h1 id="title">Journal📖🖊️</h1>    
-<div id="container">
-    <div id="para-container">
-        <h2>title</h2>
-        <h4>gratitude</h4>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime, et. Enim sapiente eligendi ipsa quaerat sit impedit deserunt esse exercitationem, obcaecati modi, quasi, perferendis illum nulla cumque dignissimos aspernatur reprehenderit?</p>
-        <button class="delbtn">Delete</button>
+<h1 id="title">&nbsp;&nbsp;Journal📖🖊️</h1>    
+<div class="container">
+    <div class="journal-container">
+        <h2>Day One!:😊😇</h2>
+        <h5>"Not one day, but day one🌟🔥."</h5>
+        <p>Today, I opened my new journal, and the empty pages looked back at me. With my pen, I started to share bits of my day—simple things and how they made me feel. It felt like giving a voice to my thoughts on paper. Each word seemed like a small step into understanding myself better, turning the blank spaces into a canvas of my own stories. Closing the journal after this first entry, I felt a warm connection, like a beginning friendship, promising more moments and discoveries ahead.</p>
+        <button onclick="editJournal(event)" class="editbtn">Edit</button>
+        <button class="delbtn" onclick='deleted(event)'>Delete</button>
+        <button onclick="saveJournal(event)" class="savebtn">Save</button>
+
+
     </div>
 </div>
 <div id="popup-container">
@@ -173,19 +221,114 @@
     var popupcontainer = document.getElementById("popup-container")
     var popupbox = document.getElementById("popup-box")
     var addbutton = document.getElementById("adds-btn")
-    var addjournal = document.getElementById("popup-add")
     var deletebtn = document.querySelector(".delbtn")
+    var container = document.querySelector(".container")
+    var popuptitle = document.getElementById("popup-title")
+    var popupgratitude = document.getElementById("popup-gratitude")
+    var popuppara = document.getElementById("popup-para")
+    var addjournal = document.getElementById("popup-add")
+    var popupcancel = document.getElementById("popup-cancel")
     addjournal.addEventListener("click",function(event){
         event.preventDefault()
+        if (popuptitle.value === ''&&popupgratitude.value === ''&&popuppara.value === ''){
+           alert("You Must Enter Something!") 
+           return false;
+        }
+        var div = document.createElement("div")
+        div.setAttribute("class","journal-container")
+        div.innerHTML = `<h2>${popuptitle.value}</h2>
+        <h5>${popupgratitude.value}</h5>
+        <p>${popuppara.value}</p>
+        <button onclick="editJournal(event)" class="editbtn">Edit</button>
+        <button class="delbtn" onclick='deleted(event)'>Delete</button>
+        <button onclick="saveJournal(event)" class="savebtn">Save</button>`
+        container.append(div)
+        popupcontainer.style.display="none"
+        popupbox.style.display="none"
+        popuptitle.value = '';
+        popupgratitude.value = '';
+        popuppara.value = '';
+        
+        
     })
     addbutton.addEventListener("click",function(){
         popupcontainer.style.display="block"
         popupbox.style.display="block"
 
     })
+    popupcancel.addEventListener("click",function(){
+        event.preventDefault()
+        popupcontainer.style.display="none"
+        popupbox.style.display="none"
+
+
+    })
     deletebtn.addEventListener("click",function(event){
         event.target.parentElement.remove()
     })
+
+    function deleted(event){
+        event.target.parentElement.remove()
+    }
+
+    var editing = falase;
+    function editJournal(event){
+
+        var edit = document.querySelector(".editbtn");
+        var para = document.querySelector(".journal-container p");
+        var h2 = document.querySelector(".journal-container h2");
+        var h5 = document.querySelector(".journal-container h5");
+
+
+        edit.addEventListener("click", function() {
+            para.classList.add("edit-mode");
+            h2.classList.add("edit-mode");
+            h5.classList.add("edit-mode");
+        });
+
+        para.addEventListener("mouseleave", function() {
+            para.classList.remove("edit-mode");
+            h2.classList.remove("edit-mode");
+            h5.classList.remove("edit-mode");
+        });
+        var container = event.target.parentElement
+        var title = container.querySelector("h2")
+        var gratitude = container.querySelector("h5")
+        var para = container.querySelector("p")
+        
+        title.setAttribute('data-original',title.innerHTML)
+        gratitude.setAttribute('data-original',gratitude.innerHTML)
+        para.setAttribute('data-original',para.innerHTML)
+
+        title.setAttribute('contenteditable','true')
+        gratitude.setAttribute('contenteditable','true')
+        para.setAttribute('contenteditable','true')
+
+        editing = true;
+    }
+
+    function saveJournal(event){
+        var container = event.target.parentElement
+        var title = container.querySelector("h2")
+        var gratitude = container.querySelector("h5")
+        var para = container.querySelector("p")
+
+        title.setAttribute('contenteditable','false')
+        gratitude.setAttribute('contenteditable','false')
+        para.setAttribute('contenteditable','false')
+
+        editing = false;
+    }
+    var edit = document.querySelector(".editbtn");
+    var para = document.querySelector(".journal-container p");
+
+    edit.addEventListener("click", function() {
+        para.classList.add("edit-mode");
+    });
+
+    para.addEventListener("mouseleave", function() {
+        para.classList.remove("edit-mode");
+    });
 
 </script>
 </body>
