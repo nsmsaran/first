@@ -12,11 +12,12 @@
     <style>
         body{
             font-family: poppins;
+            padding: 5px 10px;
         }
         .head h1{
             display: inline;
             margin-left: 300px;
-            
+
         }
         .head button{
             font-size: 25px;
@@ -36,7 +37,12 @@
             font-size: 16px;
         }
         #board{
-            
+            width: 50%;
+            border: 1px solid gray;
+            padding: 5px 10px 15px 10px;
+            border-radius: 5px;
+            background-color: whitesmoke;
+            opacity: 0.9;
         }
         .number{
             margin-right: 15px;
@@ -44,21 +50,30 @@
             color: whitesmoke;
             padding: 10px 15px;
             border-radius: 100%;
-            
-        }
-        .option{
-            border: 2px solid gray;
-            padding: 18px 23px;
-            border-radius: 8px;
-            padding-right: 50%;
-        }
-        .options{
-            font-size: 20px;
 
         }
-        .hello{
-            margin-bottom:50px;
-        }
+       .submitbtn{
+        padding: 15px 25px;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        background-color: black;
+        color: gray;
+        opacity: 0.8;
+        margin-left: 70%;
+       }
+       .submitbtn:hover{
+        background-color: gray;
+        color: black;
+        opacity: 0.8;
+        transition-duration: 2s;
+       }
+       .imgs{
+        position: absolute;
+        top: 110%;
+        right:10%
+        
+       }
     </style>
 </head>
 <body>
@@ -69,13 +84,14 @@
     <div class="middle">
         <h3>"Discover Your English Level: Get Started Now"</h3>
         <p>Explore your English skills with our "Know Your Level in English" section. It's designed to help you understand where you are in your English journey. Take a few quick tests and find out if you're a beginner, intermediate, or advanced learner. We'll also provide tailored tips to help you improve your English based on your results. Let's begin your English adventure today!</p>
-        <button>Start Now</button>
+        <button class="submitbtn">Start Now</button>
     </div>
     <div>
         <h4>Test Your English</h4>
         <p>For the questions below, please choose the best option to complete the sentence.</p>
     <h2 id="heading"></h2>
     <div id="board"></div>
+    <div id="image"></div>
 </div>
     <script>
         var position = 0, board, question, choices, a, b, c, d, correct = 0;
@@ -94,12 +110,14 @@
             displayQuestion();
         function displayQuestion(){
             board = document.getElementById("board");
-            heading = document.getElementById("heading")
+            heading = document.getElementById("heading");
+            image = document.getElementById("image");
             if (position >= questions.length){
                 if(correct<=4){
                     heading.innerHTML = "You're a Turtle!!🐢"
                     board.innerHTML = '<h3>Beginner (A1A2) - "Steady Start":</h3>';
                     board.innerHTML +="<p>Begin with everyday vocabulary and basic grammar. Practice speaking with language partners and use interactive apps for structured learning.</p>";
+                    image.innerHTML = "<img src='park.jpg' class='imgs'>"
                     return false;
                 }
                 else if(correct<=7){
@@ -120,18 +138,18 @@
                 correct = 0;
                 return false;
             }
-            heading.innerHTML = "question " + (position + 1)+" of "+questions.length;
+            heading.innerHTML = "Question " + (position + 1)+" of "+questions.length;
             question = questions[position][0];
             a = questions[position][1];
             b = questions[position][2];
             c = questions[position][3];
             d = questions[position][4];
-            board.innerHTML = "<h3 class='hello'> <span class='number'>"+(position+1) +"</span>"  +question+"</h3>";
-            board.innerHTML+= "<label class='option'><input type='radio'  class='options' name='choices' value='a'>"+a+"</label><br>";
-            board.innerHTML+= "<label><input type='radio' name='choices' value='b'>"+b+"</label><br>";
-            board.innerHTML+= "<label><input type='radio' name='choices' value='c'>"+c+"</label><br>";
-            board.innerHTML+= "<label><input type='radio' name='choices' value='d'>"+d+"</label><br>";
-            board.innerHTML+= "<button onclick='checkAnswer()'>Submit Answer</button>";
+            board.innerHTML = "<h3 class='hello'> <span class='number'>"+(position+1) +"</span>"  +question+"</h3><br>";
+            board.innerHTML+= "<label class='option'><input type='radio'  class='options' name='choices' value='a'>"+a+"</label><br><br>";
+            board.innerHTML+= "<label><input type='radio' name='choices' value='b'>"+b+"</label><br><br>";
+            board.innerHTML+= "<label><input type='radio' name='choices' value='c'>"+c+"</label><br><br>";
+            board.innerHTML+= "<label><input type='radio' name='choices' value='d'>"+d+"</label><br><br>";
+            board.innerHTML+= "<button onclick='checkAnswer()' class='submitbtn'>Submit Answer</button>";
 
         }
         function checkAnswer(){
@@ -148,7 +166,7 @@
             position++;
             displayQuestion();
         }
-        
+
     </script>
 </body>
 </html>
