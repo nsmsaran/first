@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your Level In English</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    {%load static%}
+    <style>
+        body{
+            font-family: poppins;
+        }
+        .head h1{
+            display: inline;
+            margin-left: 300px;
+            
+        }
+        .head button{
+            font-size: 25px;
+            padding: 5px 15px;
+        }
+        .head{
+            padding: 15px;
+            background-color: grey;
+            opacity: 0.8;
+            height: 50px;
+        }
+        .middle button{
+            margin-left: 45%;
+        }
+        #heading{
+            text-align: center;
+            font-size: 16px;
+        }
+        #board{
+            
+        }
+        .number{
+            margin-right: 15px;
+            background-color: black;
+            color: whitesmoke;
+            padding: 10px 15px;
+            border-radius: 100%;
+            
+        }
+        .option{
+            border: 2px solid gray;
+            padding: 18px 23px;
+            border-radius: 8px;
+            padding-right: 50%;
+        }
+        .options{
+            font-size: 20px;
+
+        }
+        .hello{
+            margin-bottom:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <button>◀</button>
+        <h1>English Proficiency Check</h1>
+    </div>
+    <div class="middle">
+        <h3>"Discover Your English Level: Get Started Now"</h3>
+        <p>Explore your English skills with our "Know Your Level in English" section. It's designed to help you understand where you are in your English journey. Take a few quick tests and find out if you're a beginner, intermediate, or advanced learner. We'll also provide tailored tips to help you improve your English based on your results. Let's begin your English adventure today!</p>
+        <button>Start Now</button>
+    </div>
+    <div>
+        <h4>Test Your English</h4>
+        <p>For the questions below, please choose the best option to complete the sentence.</p>
+    <h2 id="heading"></h2>
+    <div id="board"></div>
+</div>
+    <script>
+        var position = 0, board, question, choices, a, b, c, d, correct = 0;
+        var questions = [
+            ["What is the opposite of 'hot'?","Cold","Warm","Cool","Burning","a"],
+            ["Choose the correct spelling:"," Acheive","Achieve"," Acheeve","Achieeve","d"],
+            ["Which sentence is correct?"," He play soccer every day.","He plays soccer every day.","He playing soccer every day.","He played soccer every day.","b"],
+            ["What is the past tense of 'eat'?"," Eated","Ate","Eat","Eaten","b"],
+            ["Which word is a conjunction?","And","Happy","Jump","Quickly","a"],
+            ["They ________ to the cinema last night.","Go","Went","Goes","Going","b"],
+            ["What is the plural of 'book'?","Book","Books","Bookes","Bookies","b"],
+            [" Which word is a noun?","Quickly","Run","Happiness","Laughing","c"],
+            ["What is the present participle of 'run'?","Ran","Running","Runs","Runned","b"],
+            ["Choose the correct sentence:","I going to the store.","I went to the store.","I goes to the store.","I go to the store.","d"]
+    ]
+            displayQuestion();
+        function displayQuestion(){
+            board = document.getElementById("board");
+            heading = document.getElementById("heading")
+            if (position >= questions.length){
+                if(correct<=4){
+                    heading.innerHTML = "You're a Turtle!!🐢"
+                    board.innerHTML = '<h3>Beginner (A1A2) - "Steady Start":</h3>';
+                    board.innerHTML +="<p>Begin with everyday vocabulary and basic grammar. Practice speaking with language partners and use interactive apps for structured learning.</p>";
+                    return false;
+                }
+                else if(correct<=7){
+                    heading.innerHTML = "You're a Ostrich!!🦩"
+                    board.innerHTML = '<h3>Intermediate (B1B2) - "Progress Path":</h3>';
+                    board.innerHTML +="<p>Dive into diverse English media for vocabulary expansion. Interact with native speakers and practice challenging grammar exercises for improvement.</p>";
+                    return false;
+                }
+                else if(correct<=10){
+                    heading.innerHTML = "You're a Eagle!!🦅"
+                    board.innerHTML = '<h3>Advanced (C1C2) - "Mastery Method":</h3>';
+                    board.innerHTML +="<p>Immerse deeply in English literature and media. Engage in intellectual discourse and presentations for refined expression. Sustain proficiency through continuous exposure and rigorous practice.</p>";
+                    return false;
+                }
+                // heading.innerHTML = "completed";
+                // board.innerHTML = "<h2>you got "+correct+ "of" +question.length+"</h2>";
+                position = 0;
+                correct = 0;
+                return false;
+            }
+            heading.innerHTML = "question " + (position + 1)+" of "+questions.length;
+            question = questions[position][0];
+            a = questions[position][1];
+            b = questions[position][2];
+            c = questions[position][3];
+            d = questions[position][4];
+            board.innerHTML = "<h3 class='hello'> <span class='number'>"+(position+1) +"</span>"  +question+"</h3>";
+            board.innerHTML+= "<label class='option'><input type='radio'  class='options' name='choices' value='a'>"+a+"</label><br>";
+            board.innerHTML+= "<label><input type='radio' name='choices' value='b'>"+b+"</label><br>";
+            board.innerHTML+= "<label><input type='radio' name='choices' value='c'>"+c+"</label><br>";
+            board.innerHTML+= "<label><input type='radio' name='choices' value='d'>"+d+"</label><br>";
+            board.innerHTML+= "<button onclick='checkAnswer()'>Submit Answer</button>";
+
+        }
+        function checkAnswer(){
+            var choice ='';
+            choices = document.getElementsByName("choices");
+            for(var i = 0; i<choices.length;i++){
+                if (choices[i].checked){
+                    choice = choices[i].value; 
+                }
+            }
+            if (choice == questions[position][5]){
+                correct++;
+            }
+            position++;
+            displayQuestion();
+        }
+        
+    </script>
+</body>
+</html>
