@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Minitube.com</title>
+  <link rel="stylesheet" href="style/general.css">
+  <link rel="stylesheet" href="style/header.css">
+  <link rel="stylesheet" href="style/video.css">
+  <link rel="stylesheet" href="style/sidebar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+{%load static%}
+<style>
+    p{
+    font-family: Roboto,Arial;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  } 
+  body{
+    margin: 0px;
+    padding-top: 80px;
+    padding-left: 96px;
+    padding-right: 24px;
+    background-color: rgb(248,248,248);
+  }
+  .header{
+    height: 55px;
+    display: flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    background-color: white; 
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(207, 200, 200);
+  
+  }
+  .left-section{
+    display: flex;
+    align-items: center ;
+  }
+  .hamburger-menu{
+    height: 24px;
+    margin-left: 24px;
+    margin-right: 24px;
+
+  }
+  .youtube-logo{
+    height: 20px;
+  }
+  
+  .middle-section{
+    margin-left:70px;
+    margin-right:35px;
+    flex: 1;
+    max-width: 500px ;
+    display: flex;
+    align-items: center;
+   
+  } 
+  .search-bar{
+    height: 36px;
+    flex: 1;
+    padding-left: 10px;
+    font-size: 16px;
+    border: 1px solid rgb(192,192,192) ;
+    border-radius: 2px;
+    box-shadow: inset 1px 1px 2px rgba(192,192,192,0.5);
+    width: 0;
+  }
+  
+  .search-bar::placeholder{
+    font-family: Roboto,Arial;
+    font-size: 16px;
+    }
+  .search-button{
+    height: 40px;
+    width: 66px;
+    background-color: rgb(240,240,240);
+    border: 1px solid rgb(192,192,192);
+    margin-left: -1px;
+    margin-right: 10px; 
+    
+  }
+   
+  .search-button,
+  .voice-button,
+  .upload-icon-container,
+  .youtube-apps-icon-container,
+  .youtube-apps-icon-container,
+  .notifications-icon-container{
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .search-button .tooltip,
+  .voice-button .tooltip, 
+  .upload-icon-container .tooltip,
+  .youtube-apps-icon-container .tooltip,
+  .notifications-icon-container .tooltip {
+    background-color: gray;
+    font-family: Roboto,Arial;
+    color: white;
+    position: absolute;
+    padding-top: 8px;
+    padding-bottom:8px;
+    padding-left:4px;
+    padding-right: 4px;
+    border-radius: 2px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    bottom: -35px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .search-button:hover .tooltip,
+  .voice-button:hover .tooltip,
+  .upload-icon-container:hover .tooltip,
+  .youtube-apps-icon-container:hover .tooltip,
+  .notifications-icon-container:hover .tooltip
+ {
+     opacity: 1;
+     
+  }
+
+  .search-icons{
+    height: 24px;
+   
+  }
+  .voice-button{
+    height: 40px;
+    width: 40px; 
+    border-radius: 20px;
+    background-color:  rgb(245,245,245);
+    border: none;
+   }
+
+   .voice-icon{
+    height:24px;
+   
+   }
+   
+ .right-section{
+    width: 180px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0 ;
+  }
+  
+  .upload-icon{
+    height: 24px;
+  }
+
+  .youtube-apps-icon{
+    height: 24px;
+  }
+   .notifications-icon-container{
+    position: relative;
+   }
+   .notifications-count{
+    position: absolute;
+    background-color: rgb(199, 13, 13);
+    color: white;
+    border-radius: 10px;
+    font-family: Roboto,Arial;
+    font-size: 10px;
+    top: -2px;
+    right: -2px;
+    padding-left: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 4px;
+   }
+  .notifications-icon{
+    height: 24px;
+  }
+  
+  .current-channel-logo-icon{
+    height: 35px;
+    border-radius: 20px;
+  }
+  .sidebar{
+    position: fixed;
+    top: 55px;
+    background-color: white;
+    left: 0;
+    bottom: 0;
+    width: 72px ;
+    z-index: 200;
+    padding-top: 5px;
+   
+
+}
+.sidebar-link{
+    height:74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.sidebar-link:hover{
+    background-color: rgb(235,235,235);
+}
+.sidebar-link img{
+    height: 24px;
+    margin-bottom: 4px;
+}
+.sidebar-link div{
+    font-family: Roboto, Arial;
+    font-size: 10px;
+
+}
+.thumbnail{
+  width: 100%;
+}
+.thumbnail-row{
+  margin-bottom: 8px;
+  position: relative;
+}
+.video-time{
+  background-color: black;
+  color: white;
+  position: absolute;
+  font-family: Roboto,Arial;
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 4px;
+  right: 4px;
+  bottom: 8px;
+  border-radius: 2px;
+
+}
+.video-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+}
+
+@media (max-width: 750px){
+  .video-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width:751px) and (max-width:999px){
+  .video-grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media  (min-width:1350px) {
+  .video-grid{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.video-info-grid{
+  display:grid;
+  grid-template-columns: 50px 1fr;
+}
+
+.video-info{
+ display: inline-block;
+ width: 100%;
+ margin-left: 5px; 
+}
+.video-title{
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  width: 100%;
+}
+.video-author{
+  margin-top: 0px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: rgb(96,96,96);
+}
+.video-stats{
+  font-size: 12px;
+  color: rgb(96,96,96);
+
+}
+.logo{
+
+}
+.logo-img{
+  width: 36px;
+  border-radius: 90px;
+}  
+</style>
+</head>
+<body>
+
+  <header class="header">
+  <div class="left-section">
+    <img class="hamburger-menu" src="{%static 'hamburger-menu.svg'%}" alt="">
+    <img class="youtube-logo"  src="{%static 'youtube-logo.svg'%}" alt="">
+  </div>
+  <div class="middle-section">
+    <input class="search-bar" type="text" placeholder="Search">
+    <button class="search-button" >
+      <img class="search-icons" src="{%static 'search.svg'%}" alt="">
+      <div class="tooltip"> Search</div>
+       </button>
+       <button class="voice-button">
+        <img class="voice-icon" src="{%static 'voice-search-icon.svg'%}" alt="">
+      <div class="tooltip">Search with your voice</div> 
+      </button>
+  </div>
+  <div class="right-section">
+    <div class="upload-icon-container">
+     <img class="upload-icon" src="{%static 'upload.svg'%}" alt="">
+     <div class="tooltip">Create</div>
+    </div>
+    <div class="youtube-apps-icon-container">
+     <img class="youtube-apps-icon" src="{%static 'youtube-apps.svg'%}" alt="">
+     <div class="tooltip">YouTube apps</div>
+    </div>
+     <div class="notifications-icon-container">
+      <img class="notifications-icon" src="{%static 'notifications.svg'%}" alt="">
+      <div class="tooltip">Notifications</div>
+     <div class="notifications-count ">5</div>
+    </div>
+     <img class="current-channel-logo-icon" src="{%static '/channel-logo/channel.jpeg'%}" alt="">
+  </header>
+  <nav class="sidebar">
+    <div class="sidebar-link">
+      <img src="{%static 'home.svg'%}" alt="">
+      <div>Home</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="{%static 'explore.svg'%}" alt="">
+      <div>Explore</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="{%static 'subscriptions.svg'%}" alt="">
+      <div>Subscriptions</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="{%static 'originals.svg'%}" alt="">
+      <div>Originals</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="{%static 'youtube-music.svg'%}" alt="">
+      <div>MiniTube Music</div>
+    </div>
+    <div class="sidebar-link">
+      <img src="{%static 'library.svg'%}" alt="">
+      <div>Library</div>
+    </div> 
+
+  </div>
+</nav> 
+  <div class="video-grid">
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=GAi7WfzbEvU&pp=ygUaZ3Jvd2luZ2FubmFuYXMgY29uc2lzdGVuY3k%3D">
+      <img class="thumbnail" src="{% static '/thumbnail/thumbnail-1.webp' %}" alt=""></a>
+      <div class="video-time">35.47</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@growingannanas">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-1.jpg' %}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">discipline and consistency | podcast today I'm growing by growingannas</p>
+        </div>
+      <div >
+        <p class="video-author" >growingannas</p>
+      </div>
+     <div  >
+      <p class="video-stats">2.4 lakh views &#183 1 month ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+  
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/F8cTp_hZKZg?si=cRAAuF_auSl1G3Pw">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-2.webp'%}" alt=""></a>
+      <div class="video-time">8:22</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@almosteverything">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-2.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">TRY IT FOR 21 DAYS | Morning Routine for Intense Focus. Subconscious Programming | almost everything</p>
+        </div>
+      <div >
+        <p class="video-author" >Almost Everything</p>
+      </div>
+     <div  >
+      <p class="video-stats">74,747 views &#183 2 weeks ago </p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=axYAW7PuSIM&pp=ygUrZW5nbGlzaCBzdHVkeSBwbGFuIDIwIG1pbnV0ZSBieSBsaW5ndWFtYXJpYQ%3D%3D">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-3.webp'%}" alt=""></a>
+      <div class="video-time">10:32</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@linguamarina">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-3.jpeg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">English study plan -20-minute daily English learning routine</p>
+        </div>
+      <div >
+        <p class="video-author" >linguamarina</p>
+      </div>
+     <div  >
+      <p class="video-stats">22 lakhs views &#183 9 months ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+  
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/Ung2nrYBvmM?si=4hV1SSoNi8LDnkhA">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-4.webp'%}" alt=""></a>
+      <div class="video-time" >9:38:04</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@EmoAnalysis">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-4.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">How to Achieve Anything Faster Than Others Like Kiyotaka Ayanokoji</p>
+        </div>
+      <div >
+        <p class="video-author" >Emo Analysis</p>
+      </div>
+     <div  >
+      <p class="video-stats">1 lakh views &#183 3 weeks ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=gqviJoSkf6U&t=62s&pp=ygUhaWYgeW91IGNhbiBkcmVhbSBpdCB5b3UgY2FuIGRvIGl0">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-5.webp'%}" alt=""></a>
+       <div class="video-time">9:29</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@TheBookShowbyrjananthi">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-5.jpeg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">If You Can Dream It, You Can Do It!| Attitude Is Everything | The Book show ft. RJ Ananthi </p>
+        </div>
+      <div >
+        <p class="video-author" >The Book show ft. RJ Ananthi </p>
+      </div>
+     <div  >
+      <p class="video-stats">8.7 lakhs views &#183 2 years ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+  
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=p6X_5rkkA-I&pp=ygUubGVhcm4gZW5nbGlzaCB3aXRoIGZyaWVuZHMgdGhlIGZyaWVuZGx5IGZpbmdlcg%3D%3D">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-6.webp'%}" alt=""></a>
+      <div class="video-time" >27:17</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@LearnEnglishWithTVSeries">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-6.jpeg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">Learn English with Friends | The Friendly Finger</p>
+        </div>
+      <div >
+        <p class="video-author" >Learn English With TV Series</p>
+      </div>
+     <div  >
+      <p class="video-stats">30,917 views &#183 2 weeks ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/R2VOK6czlh8?si=KH0GfIREfpwQ4InS">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-7.webp'%}" alt=""></a>
+      <div class="video-time" >13:14</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@JillzGuerin">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-7.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">How to *actually* REINVENT YOURSELF in 2024</p>
+        </div>
+      <div >
+        <p class="video-author" >Jillz Guerin</p>
+      </div>
+     <div  >
+      <p class="video-stats">4.5 lakhs views &#183 2 months ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/PCS-dvQvXIw?si=oleKJ9d66_G4bMY4">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-8.webp'%}" alt=""></a>
+      <div class="video-time" >27:17</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@askvinh">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-8.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">5 Ways To Be Less SHY & More CONFIDENT!</p>
+        </div>
+      <div >
+        <p class="video-author" >Vinh Giang</p>
+      </div>
+     <div  >
+      <p class="video-stats">2.2 lakhs views &#183 1 year ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+
+
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://youtu.be/zdw1NvaDGCw?si=maDyc193XEW-jdKD">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-9.webp'%}" alt=""></a>
+      <div class="video-time" >14:51</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@ruriohama">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-9.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">How To Make The Greatest Comeback Of Your Life (In 6-12 months)</p>
+        </div>
+      <div >
+        <p class="video-author" >Ruhi Ohama</p>
+      </div>
+     <div  >
+      <p class="video-stats">5.1 lakh views &#183 3 month ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=we3710buqkY">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-10.webp'%}" alt=""></a>
+      <div class="video-time" >14:41</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@MSA.official">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-10.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">I'm Ada Lovelace - I'm The Mother of Computers</p>
+        </div>
+      <div >
+        <p class="video-author" >MSA Previously My Story Animated</p>
+      </div>
+     <div  >
+      <p class="video-stats">80 lakh views &#183 7 months ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=-VDXBHLU8q4">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-11.webp'%}" alt=""></a>
+      <div class="video-time" >9:17</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@InternetMadeCoder">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-11.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">How I Learned to code in 4 MONTHS & Got a Job Offer(no CS Degree) </p>
+        </div>
+      <div >
+        <p class="video-author" >Internet Made Coder</p>
+      </div>
+     <div  >
+      <p class="video-stats">34 lakh views &#183 Before 1 ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+
+  <div class="video-preview">
+    <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=22wpwgpy7fY">
+      <img class="thumbnail" src="{%static '/thumbnail/thumbnail-12.webp'%}" alt=""></a>
+      <div class="video-time" >7:43</div>
+    </div>
+    <div class="video-info-grid">
+      <div class="logo">
+        <a href="https://www.youtube.com/@BuddhismInEnglish">
+        <img  class="logo-img" src="{%static '/channel-logo/channel-12.jpg'%}" alt=""></a>
+      </div>
+      <div class="video-info">
+        <div >
+          <p class="video-title">How To Control Your Mind|Buddhism in English</p>
+        </div>
+      <div >
+        <p class="video-author" >Buddhism</p>
+      </div>
+     <div  >
+      <p class="video-stats">13 lakh views &#183 7 months ago</p>
+     </div>
+  </div>
+    </div>
+    
+  </div>
+
+
+
+</div>
+ 
+</body>
+</html>
