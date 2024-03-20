@@ -13,6 +13,9 @@
         body{
             font-family: poppins;
             padding: 5px 10px;
+            background-color: rgb(37, 37, 37);
+            color: whitesmoke;
+            
         }
         .head h1{
             display: inline;
@@ -25,7 +28,7 @@
         }
         .head{
             padding: 15px;
-            background-color: grey;
+            background-color: ;
             opacity: 0.8;
             height: 50px;
         }
@@ -41,13 +44,16 @@
             border: 1px solid gray;
             padding: 5px 10px 15px 10px;
             border-radius: 5px;
-            background-color: whitesmoke;
+            /* background-color: whitesmoke; */
             opacity: 0.9;
+            margin-left: 25%;
+            color: whitesmoke;
         }
+        
         .number{
             margin-right: 15px;
-            background-color: black;
-            color: whitesmoke;
+            background-color:whitesmoke;
+            color: black;
             padding: 10px 15px;
             border-radius: 100%;
 
@@ -57,8 +63,8 @@
         border-radius: 5px;
         border: none;
         font-weight: bold;
-        background-color: black;
-        color: gray;
+        background-color: whitesmoke;
+        color: black;
         opacity: 0.8;
         margin-left: 70%;
        }
@@ -68,32 +74,134 @@
         opacity: 0.8;
         transition-duration: 2s;
        }
-       .imgs{
-        position: absolute;
-        top: 110%;
-        right:10%
+       h5{
+        text-align: center;
+        margin-top: 20px;
+       }
+       .content{
+        padding: 10px 20px 10px 10px;
+       }
+       .hide,.hides,.hid{
+        display: none;
+       }
+       .hided,.hidedd{
+        display: none;
+       }
+       .box{
+        background-color: gray;
+        width: 70%;
+        margin-left: 14%;
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+       }
+       .box button{
+        margin-left: 10%;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
         
        }
     </style>
 </head>
 <body>
     <div class="head">
-        <button>◀</button>
+        <button onclick="window.location.href='landing.html'">◀</button>
         <h1>English Proficiency Check</h1>
     </div>
     <div class="middle">
         <h3>"Discover Your English Level: Get Started Now"</h3>
         <p>Explore your English skills with our "Know Your Level in English" section. It's designed to help you understand where you are in your English journey. Take a few quick tests and find out if you're a beginner, intermediate, or advanced learner. We'll also provide tailored tips to help you improve your English based on your results. Let's begin your English adventure today!</p>
-        <button class="submitbtn">Start Now</button>
+        <button class="submitbtn" onclick="scrollToBoard()">Start Now</button>
     </div>
     <div>
         <h4>Test Your English</h4>
         <p>For the questions below, please choose the best option to complete the sentence.</p>
-    <h2 id="heading"></h2>
-    <div id="board"></div>
-    <div id="image"></div>
+        <h2 id="heading"></h2>
+        <div id="board"></div>
+    <h5>--Read More--</h5>
+    <div class="content">
+        <h2>Beginner (A1A2) - "Language Launchpad":</h2>
+        <p>Entering the realm of language learning, beginners can establish a solid foundation by focusing on everyday vocabulary and basic grammar concepts. Engaging in regular conversations with language partners aids in developing fluency and confidence. Supplementing learning with interactive apps and beginner-friendly textbooks offers structured guidance for gradual improvement.</p>
+    </div>
+    <div class="content">
+        <h2>Intermediate (B1B2) - "Voyage of Progress":</h2>
+        <p>Embark on a journey of language enhancement by delving into diverse English media, including books, movies, and podcasts, to expand vocabulary and comprehension. Interacting with native speakers facilitates nuanced communication and pronunciation refinement. Intermediate learners further advance through challenging grammar exercises and writing tasks, fostering growth and proficiency.</p>
+    </div>
+    <div class="content">
+        <h2>Advanced (C1C2) - "Mastery Odyssey":</h2>
+        <p>For those already adept, achieving fluency involves immersing deeply in English media, such as literature and documentaries, elevating comprehension and cultural understanding. Engage in intellectual discourse and presentations to fine-tune articulation and expression. Sustain proficiency through continual exposure to advanced reading materials and rigorous writing endeavors, ensuring mastery and eloquence.</p>
+    </div>
+    <div class="box"><h3 class="qus">how to actually learn english and how long it takes?<button onclick="details()">View More</button></h3>
+    <p class="hide">Learning English requires dedication, immersion, and regular practice. Begin with the basics of grammar, vocabulary, and pronunciation, and gradually expand your skills through exposure to English media and consistent practice. Set clear goals, prioritize communication, and seek feedback to improve. Stay motivated, celebrate progress, and remember that language learning is a journey that takes time and commitment. With perseverance and effort, you can develop proficiency in English and achieve your language learning goals.</p>
 </div>
+<div class="box"><h3 class="qus">how to actually learn english and how long it takes?<button onclick="detail()">View More</button></h3>
+    <p class="hides">Learning English requires dedication, immersion, and regular practice. Begin with the basics of grammar, vocabulary, and pronunciation, and gradually expand your skills through exposure to English media and consistent practice. Set clear goals, prioritize communication, and seek feedback to improve. Stay motivated, celebrate progress, and remember that language learning is a journey that takes time and commitment. With perseverance and effort, you can develop proficiency in English and achieve your language learning goals.</p>
+</div>
+<div class="box"><h3 class="qus">how to actually learn english and how long it takes?<button onclick="detailed()">View More</button></h3>
+    <p class="hided">Learning English requires dedication, immersion, and regular practice. Begin with the basics of grammar, vocabulary, and pronunciation, and gradually expand your skills through exposure to English media and consistent practice. Set clear goals, prioritize communication, and seek feedback to improve. Stay motivated, celebrate progress, and remember that language learning is a journey that takes time and commitment. With perseverance and effort, you can develop proficiency in English and achieve your language learning goals.</p>
+</div>
+<div class="box"><h3 class="qus">how to actually learn english and how long it takes?<button onclick="detai()">View More</button></h3>
+    <p class="hid">Learning English requires dedication, immersion, and regular practice. Begin with the basics of grammar, vocabulary, and pronunciation, and gradually expand your skills through exposure to English media and consistent practice. Set clear goals, prioritize communication, and seek feedback to improve. Stay motivated, celebrate progress, and remember that language learning is a journey that takes time and commitment. With perseverance and effort, you can develop proficiency in English and achieve your language learning goals.</p>
+</div>
+<div class="box"><h3 class="qus">how to actually learn english and how long it takes?<button onclick="detailedd()">View More</button></h3>
+    <p class="hidedd">Learning English requires dedication, immersion, and regular practice. Begin with the basics of grammar, vocabulary, and pronunciation, and gradually expand your skills through exposure to English media and consistent practice. Set clear goals, prioritize communication, and seek feedback to improve. Stay motivated, celebrate progress, and remember that language learning is a journey that takes time and commitment. With perseverance and effort, you can develop proficiency in English and achieve your language learning goals.</p>
+</div>
+</div>
+
     <script>
+        
+        function scrollToBoard() {
+            document.getElementById("heading").scrollIntoView({ behavior: 'smooth' });
+        }
+        function details() {
+        var hide = document.querySelector(".hide");
+        
+        if (hide.style.display === "none" || hide.style.display === "") {
+            hide.style.display = "block";
+        } else {
+            hide.style.display = "none";
+        }
+        
+    }
+    function detail(){
+        var hides = document.querySelector(".hides");
+        if (hides.style.display === "none" || hides.style.display === "") {
+            hides.style.display = "block";
+        } else {
+            hides.style.display = "none";
+        }
+    }
+    function detailed() {
+        var hided = document.querySelector(".hided");
+        
+        if (hided.style.display === "none" || hided.style.display === "") {
+            hided.style.display = "block";
+        } else {
+            hided.style.display = "none";
+        }
+        
+    }
+    function detailedd() {
+        var hidedd = document.querySelector(".hidedd");
+        
+        if (hidedd.style.display === "none" || hidedd.style.display === "") {
+            hidedd.style.display = "block";
+        } else {
+            hidedd.style.display = "none";
+        }
+        
+    }
+    function detai(){
+        var hid = document.querySelector(".hid");
+        if (hid.style.display === "none" || hid.style.display === "") {
+            hid.style.display = "block";
+        } else {
+            hid.style.display = "none";
+        }
+    }
         var position = 0, board, question, choices, a, b, c, d, correct = 0;
         var questions = [
             ["What is the opposite of 'hot'?","Cold","Warm","Cool","Burning","a"],
@@ -117,7 +225,6 @@
                     heading.innerHTML = "You're a Turtle!!🐢"
                     board.innerHTML = '<h3>Beginner (A1A2) - "Steady Start":</h3>';
                     board.innerHTML +="<p>Begin with everyday vocabulary and basic grammar. Practice speaking with language partners and use interactive apps for structured learning.</p>";
-                    image.innerHTML = "<img src='park.jpg' class='imgs'>"
                     return false;
                 }
                 else if(correct<=7){
