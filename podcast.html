@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        #song-image{
+            width: 20%;
+            height: 40vh;
+            border-radius: 10%;
+        }
+        .player-container{
+            text-align: center;
+            margin-top: 50px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <div class="player">
+            <img src="musiclogo/1.jpg" alt="" id="song-image">
+        </div>
+        <div class="song-info">
+            <h2 id="song-name">Song Name</h2>
+            <h3 id="artist">artist</h3>
+        </div>
+        <input type="range" id="seek-bar" value="0" min="0" step="1">
+        <audio src="songs/DHARIA - Sugar _ Brownies (by Monoir) [Official Video](MP3_128K).mp3" id="audio"></audio>
+        <div class="controls">
+            <button id="prev-btn">Previous</button>
+            <button id="play-btn">Play</button>
+            <button id="next-btn">Next</button>
+        </div>
+    </div>
+    <script>
+        let audio = document.getElementById("audio");
+        let playbtn = document.getElementById("play-btn");
+        let prevbtn = document.getElementById("prev-btn");
+        let nextbtn = document.getElementById("next-btn");
+        let songimage = document.getElementById("song-image");
+        let songname = document.getElementById("song-name");
+        let artist = document.getElementById("artist");
+        let seekbar = document.getElementById("seek-bar");
+
+        let songImages = ['musiclogo/1.jpg','musiclogo/2.jpg','musiclogo/3.jpg']
+        let songs = ['songs/Camila Cabello - My Oh My (Official Music Video) ft. DaBaby(MP3_320K).mp3','songs/Fujii Kaze - Shinunoga E-Wa (Visual)(MP3_320K).mp3','songs/Indila - Love Story(MP3_70K).mp3']
+        let songNames = ['song1','song2','song3']
+        let artists = ['artist1','artist2','artist3']
+
+        let currentSongIndex = 0;
+
+        function loadsong(currentSongIndex){
+            audio.src = songs[currentSongIndex];
+            songimage.src = songImages[currentSongIndex];
+            songname.textContent = songNames[currentSongIndex];
+            artist.textContent = artists[currentSongIndex];
+        }
+
+        function playSong(){
+            audio.play();
+            playbtn.textContent = 'Pause';
+        }
+
+        function pauseSong(){
+            audio.pause();
+            playbtn.textContent = 'Play';
+        }
+
+        function prevSong(){
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            loadsong(currentSongIndex);
+            playSong();
+        }
+
+        function nextSong(){
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            loadsong(currentSongIndex);
+            playSong();
+        }
+
+        playbtn.addEventListener('click',()=>{
+            let isPlaying = audio.paused? false : true;
+            isPlaying? pauseSong():playSong();
+        });
+
+        prevbtn.addEventListener('click',prevSong);
+        nextbtn.addEventListener('click',nextSong);
+
+        function seek(){
+            let seekPosition = parseInt(seekbar.value);
+            audio.currentTime = seekPosition;
+        }
+
+        seekbar.addEventListener('input',seek);
+        audio.addEventListener('timeUpdate',()=>{
+            seekbar.value = audio.currentTime;
+        });
+
+        loadsong(currentSongIndex);
+    </script>
+</body>
+</html>
