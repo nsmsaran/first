@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    {%load static%}
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            font-family: Poppins;
+            background-color:rgb(233, 231, 231);
+            opacity: 0.8;
+        }
+        .adp1 h1{
+            text-align: center;
+            width: 60%;
+            margin-left: 20%;
+        }
+        .art-image{
+            width: 80%;
+            height: 100%;
+            margin-left: 10%;
+            border-radius: 5px;
+        }
+        .art-intro{
+            padding: 2% 10%;
+        }
+        .content{
+            width: 80%;
+            border: 2px solid white;
+            margin-left: 10%;
+            margin-bottom: 4%;
+            background-color: white;
+            border-radius: 4px;
+        }
+        .heading{
+            color: whitesmoke;
+
+            
+        }
+        .top{
+            background: linear-gradient(to right, #FF5F6D, #FFC371);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0px;
+            height: 90px;
+            width: 100%;
+            z-index: 10;
+        }
+        button{
+            background-color:#FF204E;
+            color: #fff;
+            font-size: 20px;
+            padding: 7px 35px;
+            /* border-radius: 12px; */
+            height: 90px;
+            /* margin-right: 10px;      */
+            border: none;       
+            
+        }
+        button:hover{
+            background-color: lightblue;
+            color: black;
+            transition-duration: 3s;
+        }
+        .main-content{
+            position: relative;
+            overflow-y: auto; 
+            margin-top: 100px;
+            
+        }
+    </style>
+</head>
+    <body>
+        <div class="top">
+            <h1 class="heading">SilentTruimph</h1>
+            <button onclick="window.location.href='/articles'">Back</button>
+        </div>
+        <div class="main-content">
+        <div class="adp1" id="one">
+            <div>
+                <h1>"Sharp Minds, Stylish Finds: A Smart & Cool Guide to Success"</h1>
+            </div>
+            <div>
+                <img src="{%static 'ath1.webp'%}" alt="" class="art-image">
+            </div>
+            <div>
+                <p class="art-intro">"Being smart and cool is a unique blend of confidence, charisma, and knowledge. It's about cultivating both your intellect and personal flair. Start by expanding your mind through continuous learning and exploration, staying informed about various subjects, and developing critical thinking skills. Equally important is embracing your uniqueness, cultivating your personal style, and exuding confidence in everything you do. Whether it's mastering social situations with ease or rocking a killer outfit, authenticity is key. Being smart and cool is about living authentically, confidently, and continuously striving for personal growth. So, let's dive in and discover how to unleash your inner smart and cool persona!"</p>
+            </div>
+            <div>
+                <div class="content">
+                    <img src="{%static 'th1.png'%}" alt="" style="width:100%;">
+                    <div style="padding: 1% 4% 1% 3%;">
+                        <p><b><span style="font-size: 22px;">1.</span>"Stay Curious"</b>: Embrace a mindset of continuous learning and exploration to cultivate a curious outlook on life. Actively seek out new knowledge, experiences, and perspectives by reading books, taking courses, attending workshops, and engaging in meaningful conversations. Curiosity fuels personal growth, expands your horizons, and fosters creativity and innovation. By staying curious, you remain open to new possibilities, challenges, and opportunities, enabling you to adapt and thrive in an ever-changing world.</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="{%static 'th2.jpg'%}" alt="" style="width:100%;">
+                    <div style="padding: 1% 4% 1% 3%;">
+                        <p><b><span style="font-size: 22px;">2.</span>"Own Your Confidence"</b>:Cultivate unshakeable confidence by embracing your true self and accepting both your strengths and weaknesses. Develop self-awareness to understand your values, beliefs, and aspirations, and align your actions with your authentic identity. Practice self-love, self-compassion, and positive self-talk to boost your self-esteem and inner confidence. By owning your confidence, you exude authenticity, resilience, and assertiveness, empowering you to navigate challenges with grace and poise.</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <img src="{%static 'th3.jpg'%}" alt="" style="width:100%;">
+                    <div style="padding: 1% 4% 1% 3%;">
+                        <p><b><span style="font-size: 22px;">3.</span>"Express Yourself"</b>: Develop a personal style and presence that reflects your unique personality, interests, and values. Experiment with fashion, grooming, body language, and communication styles to authentically express yourself and showcase your individuality. Cultivate self-expression as a form of creative self-discovery and empowerment. By expressing yourself confidently and boldly, you attract like-minded individuals, build meaningful connections, and leave a lasting impression on others.</p>
+                    </div>
+                </div>
+               
+            </div>    
+    </div>
+
+    <div class="adp1" id="two">
+        <div>
+            <h1>"Bold and Fearless: Navigating Towards Dark Confidence"</h1>
+        </div>
+        <div>
+            <img src="{%static 'adp2.jpg'%}" alt="" class="art-image">
+        </div>
+        <div>
+            <p class="art-intro">Dark confidence is all about feeling strong and sure of yourself, even when things get tough. It's about being okay with your imperfections and facing your fears head-on. As we journey towards dark confidence, we'll learn to accept our flaws, deal with challenges, and find inner strength. This journey will help us unlock our hidden potential and face life's ups and downs with bravery and belief in ourselves. Join us as we explore how to build dark confidence, so you can tackle anything that comes your way.</p>
+        </div>
+        <div>
+            <div class="content">
+                <img src="{%static 'th4.jpg'%}" alt="" style="width:100%;">
+                <div style="padding: 1% 4% 1% 3%;">
+                    <p><b><span style="font-size: 22px;">1.</span>"Embrace Your Imperfections"</b>: "Owning Your Flaws": Embracing your imperfections is the first step towards building dark confidence. Instead of trying to hide or deny them, acknowledge and accept them as part of who you are. By embracing your flaws, you demonstrate authenticity and resilience, which are key components of confidence.</p>
+                </div>
+            </div>
+            <div class="content">
+                <img src="{%static 'th5.jpg'%}" alt="" style="width:100%;">
+                <div style="padding: 1% 4% 1% 3%;">
+                    <p><b><span style="font-size: 22px;">2.</span>"Confront Your Fears"</b>:"Facing the Darkness": Confronting your fears is essential for developing dark confidence. Identify the fears that hold you back and actively work to overcome them. Step out of your comfort zone and confront challenges head-on, knowing that each victory strengthens your confidence and resilience.</p>
+                </div>
+            </div>
+            <div class="content">
+                <img src="{%static 'th6.jpg'%}" alt="" style="width:100%;">
+                <div style="padding: 1% 4% 1% 3%;">
+                    <p><b><span style="font-size: 22px;">3.</span>"Cultivate Inner Strength"</b>:Cultivating inner strength involves developing resilience, self-awareness, and a positive mindset. Practice self-care, surround yourself with supportive people, and engage in activities that nourish your mind and body. By tapping into your inner strength, you'll build the foundation for unshakeable confidence in any situation.</p>
+                </div>
+            </div>
+           
+        </div>    
+</div>
+<div class="adp1" id="three">
+    <div>
+        <h1> "Identity Evolution: Embracing Change to Shape Your True Self"</h1>
+    </div>
+    <div>
+        <img src="{%static 'adp3.jpg'%}" alt="" class="art-image">
+    </div>
+    <div>
+        <p class="art-intro">"Identity Evolution encapsulates the transformative process of embracing change to shape and define your true self. In a world where self-discovery is ongoing and identity is fluid, navigating this journey requires courage, introspection, and a willingness to evolve. This article serves as a compass on your quest for self-realization. By embracing change, exploring new perspectives, and honoring your authentic desires, you'll embark on a profound journey of personal growth and emerge as the truest expression of yourself."</p>
+    </div>
+    <div>
+        <div class="content">
+            <img src="{%static 'th7.jpg'%}" alt="" style="width:100%;">
+            <div style="padding: 1% 4% 1% 3%;">
+                <p><b><span style="font-size: 22px;">1.</span>"Embrace Change"</b>: "Embracing Transformation": Shifting identity begins with embracing change. Recognize that growth and evolution are natural parts of life, and embrace opportunities for transformation. Let go of outdated beliefs or labels that no longer serve you and open yourself up to new possibilities. </p>
+            </div>
+        </div>
+        <div class="content">
+            <img src="{%static 'th8.jpg'%}" alt="" style="width:100%;">
+            <div style="padding: 1% 4% 1% 3%;">
+                <p><b><span style="font-size: 22px;">2.</span>"Define Your Authentic Self"</b>:"Discovering Your True Identity": Take time to explore and define your authentic self. Reflect on your values, passions, and aspirations, and align your actions with your true identity. Embrace authenticity and live in alignment with who you truly are, rather than conforming to societal expectations or others' perceptions.</p>
+            </div>
+        </div>
+        <div class="content">
+            <img src="{%static 'th9.jpg'%}" alt="" style="width:100%;">
+            <div style="padding: 1% 4% 1% 3%;">
+                <p><b><span style="font-size: 22px;">3.</span>"Set Intentions and Take Action"</b>: "Stepping Into Your New Identity": Once you've clarified your identity, set intentions for the person you want to become and take intentional actions to embody that identity. Consistently engage in behaviors and habits that align with your new identity, and be patient with yourself as you navigate the journey of personal transformation. Remember that shifting identity is a continual process of growth and self-discovery.</p>
+            </div>
+        </div>
+       
+    </div>    
+</div>
+</div>
+</body>
+</html>
